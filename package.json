@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "node index.js",
-    "build": "node index.js build"
+    "start": "node index.js"
   },
   "author": "Wagner Silva",
   "license": "MIT",
