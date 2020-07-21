@@ -1,0 +1,20 @@
+{
+  "name": "convertmymoney-wagdev",
+  "version": "1.0.0",
+  "description": "App conversão entre Real e Dollar - Aulas 13 / Módulo 5",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node index.js",
+    "build": "node index.js build"
+  },
+  "author": "Wagner Silva",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^3.1.3",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "jest": "^26.1.0"
+  }
+}

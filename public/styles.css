@@ -1,0 +1,36 @@
+body {
+    text-align: center;
+    font-family: sans-serif;
+}
+
+h1 img {
+    width: 489px;
+    height: 57px;
+    margin-top: 20px;
+}
+
+form input {
+    border: 1px solid #000000;
+    background: #FDFDFD;
+    font-size: 20px;
+    padding: 10px;
+    margin: 4px;
+}
+
+button {
+    border: 1px solid #000000;
+    background: #d8d8d8;
+    font-size: 20px;
+    padding: 10px;
+    margin: 4px;
+}
+
+.result { padding: 10px; border: 1px solid #d8d8d8; background: #FDFDFD; }
+
+.result p{ font-size: 20px; color: gray; }
+
+.textGreen { color: #61D12F; }
+
+.textBlue { color: #376AD1; }
+
+.textRed { color: #d13737; }
