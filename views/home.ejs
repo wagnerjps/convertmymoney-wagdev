@@ -1,7 +1,22 @@
-       <%- include('header') %>
-       <form method="GET" action="cotacao">
-           <input name="cotacao" type="text" placeholder="Cotação do dolar" /><br />
-           <input name="quantidade" type="text" placeholder="Quantidade de dolares" /><br />
-           <button>Converter</button>
-       </form>
-       <%- include('footer') %>
+    <%- include('header') %>
+    <div class="containerBanner">
+        <div class="boxBanner">
+            <h1>Cotação atual</h1>
+            <% if(cotacao.error){ %>
+                <p><strong class="textRed">Não foi possível buscar a cotação,</strong></p>
+                <p><strong class="textRed">ou o mercado esta em OTC!</strong></p>
+            <% }else{ %>
+                <p>Na Data: <strong class="textBlue"><%= cotacao.dataHoraCotacao %></strong></p>
+                <p>Dolar Venda: <strong class="textGreen"><%= cotacao.cotacaoVenda %></strong></p>
+                <p>Dolar Compra: <strong class="textGreen"><%= cotacao.cotacaoCompra %></strong></p>
+            <% } %>
+        </div>
+    </div>
+    <div class="containerForm">
+        <form method="GET" action="cotacao">
+            <input name="cotacao" type="text" placeholder="Cotação do dolar" value="<%= cotacao.cotacaoVenda %>" /><br />
+            <input name="quantidade" type="text" placeholder="Quantidade de dolares" /><br />
+            <button>Converter</button>
+        </form>
+    </div>
+    <%- include('footer') %>

@@ -25,12 +25,56 @@ button {
     margin: 4px;
 }
 
-.result { padding: 10px; border: 1px solid #d8d8d8; background: #FDFDFD; }
+.containerResult {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center
+}
 
-.result p{ font-size: 20px; color: gray; }
+.boxResult { 
+    width: 350px;
+    padding: 10px; 
+    border: 1px solid #d8d8d8; 
+    background: #FDFDFD; 
+}
 
-.textGreen { color: #61D12F; }
+.boxResult p{ font-size: 20px; color: gray; }
+
+.textGreen { color: #37a007; }
 
 .textBlue { color: #376AD1; }
 
 .textRed { color: #d13737; }
+
+.containerForm{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center
+}
+
+.containerForm form{
+    margin-top: 4px;
+    width: 350px;
+    padding: 10px; 
+    border: 1px solid #d8d8d8; 
+    background: #FDFDFD; 
+}
+
+.containerBanner {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center
+}
+.boxBanner {
+    width: 350px;
+    padding: 10px; 
+    border: 1px solid #d8d8d8; 
+    background: #FDFDFD;
+}
+
+.boxBanner p {
+    font-size: 20px;
+}

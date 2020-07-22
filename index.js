@@ -2,14 +2,34 @@ const express = require('express')
 const app = express()
 const path = require('path')
 const convert = require('./lib/convert')
+const apiBCB = require('./lib/api.bcb')
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 app.use(express.static(path.join(__dirname, 'public')))
 
 
-app.get('/', (req, res) => {
-    res.render('home', {name:'Wagner'})
+app.get('/', async (req, res) => {
+    let cotacao = {}
+
+    const cotacaoVenda = await apiBCB.getCotacao('venda')
+    const cotacaoCompra = await apiBCB.getCotacao('compra')
+    const dataHoraCotacao = await apiBCB.getCotacao('dataCotacao')
+    
+    if(cotacaoVenda === '' || cotacaoCompra === ''){
+        cotacao = {
+            error: true
+        }
+    }else{
+        cotacao = {
+            error: false,
+            cotacaoVenda: cotacaoVenda,
+            cotacaoCompra: cotacaoCompra,
+            dataHoraCotacao: dataHoraCotacao
+        }
+    }
+
+    res.render('home', { cotacao: cotacao })
 })
 
 app.get('/cotacao', (req, res) => {

@@ -1,19 +1,19 @@
 <%- include('header') %>
-<div class="result">
-    <h1>Cotação</h1>
+<div class="containerResult">
+    <div class="boxResult">
+        <h1>Cotação</h1>
 
-    <% if(error) { %>
-        <p>
-            <strong class="textRed"><%= error %></strong>
-        </p>
-    <% } else { %>
-        <p>
-            <strong class="textBlue">$ <%= quantidade %></strong> 
-            na cotação de 
-            <strong class="textBlue">R$ <%= cotacao %></strong> 
-            o dolar são: 
-            <strong class="textGreen">R$ <%= conversao %> </strong>
-        </p>
-    <% } %>
+        <% if(error) { %>
+            <p>
+                <strong class="textRed"><%= error %></strong>
+            </p>
+        <% } else { %>
+            <p>
+                <p>Quantidade em USD$: <strong class="textBlue"><%= quantidade %></strong></p>
+                <p>Cotação em R$: <strong class="textBlue"><%= cotacao %></strong> </p>
+                <p>Total em R$: <strong class="textGreen"><%= conversao %> </strong></p>
+            </p>
+        <% } %>
+    </div>
 </div>
 <%- include('footer') %>
