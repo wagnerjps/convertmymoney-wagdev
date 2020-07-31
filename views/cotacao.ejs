@@ -1,19 +1,22 @@
 <%- include('header') %>
-<div class="containerResult">
-    <div class="boxResult">
+<div class='container w-50 mx-auto bg-light text-center p-4 border border-secondary rounded-lg'>
+    <div class=''>
         <h1>Cotação</h1>
-
-        <% if(error) { %>
-            <p>
-                <strong class="textRed"><%= error %></strong>
-            </p>
-        <% } else { %>
-            <p>
-                <p>Quantidade em USD$: <strong class="textBlue"><%= quantidade %></strong></p>
-                <p>Cotação em R$: <strong class="textBlue"><%= cotacao %></strong> </p>
-                <p>Total em R$: <strong class="textGreen"><%= conversao %> </strong></p>
-            </p>
-        <% } %>
+        <p>
+            <p>Quantidade em USD$: <strong class='text-primary'><%= quantidade %></strong></p>
+            <p>Cotação em R$: <strong class='text-primary'><%= cotacao %></strong> </p>
+            <p>Total em R$: <strong class='text-success'><%= conversao %> </strong></p>
+        </p>
+        <div class='text-right'>
+            <button id='voltar' type='button' class='btn btn-secondary' >Voltar</button>
+        </div>
     </div>
 </div>
+<script type='text/javascript'>
+$(function(){
+    $('#voltar').click(function(){
+        $(location).prop('href', '/')
+    })
+})
+</script>
 <%- include('footer') %>

@@ -1,22 +1,76 @@
     <%- include('header') %>
-    <div class="containerBanner">
-        <div class="boxBanner">
+    <div class='container w-50 mx-auto bg-light text-center p-4 border border-secondary rounded-lg'>
+        <div class='mx-auto '>
             <h1>Cotação atual</h1>
             <% if(cotacao.error){ %>
-                <p><strong class="textRed">Não foi possível buscar a cotação,</strong></p>
-                <p><strong class="textRed">ou o mercado esta em OTC!</strong></p>
+                <p><strong class='text-danger'>Não foi possível buscar a cotação,</strong></p>
+                <p><strong class='text-danger'>ou o mercado esta em OTC!</strong></p>
             <% }else{ %>
-                <p>Na Data: <strong class="textBlue"><%= cotacao.dataHoraCotacao %></strong></p>
-                <p>Dolar Venda: <strong class="textGreen"><%= cotacao.cotacaoVenda %></strong></p>
-                <p>Dolar Compra: <strong class="textGreen"><%= cotacao.cotacaoCompra %></strong></p>
+                <p>Na Data: <strong class='text-primary'><%= cotacao.dataHoraCotacao %></strong></p>
+                <p>Dolar Venda: <strong class='text-success'><%= cotacao.cotacaoVenda %></strong></p>
+                <p>Dolar Compra: <strong class='text-success'><%= cotacao.cotacaoCompra %></strong></p>
             <% } %>
         </div>
     </div>
-    <div class="containerForm">
-        <form method="GET" action="cotacao">
-            <input name="cotacao" type="text" placeholder="Cotação do dolar" value="<%= cotacao.cotacaoVenda %>" /><br />
-            <input name="quantidade" type="text" placeholder="Quantidade de dolares" /><br />
-            <button>Converter</button>
+    <div class='container w-50 mx-auto bg-light text-center p-4 mt-2 border border-secondary rounded-lg'>
+        <div id='alert' class='bg-warning border rounded-lg mb-4 p-1 text-info'>Dados inválidos, tente novamente!</div>
+        <form method='GET' id='form1' action='cotacao'>
+            <div class='form-group'>
+                <label for='cotacao' class='text-left'>Cotação do dolar
+                    <input name='cotacao' id='cotacao' type='text' class='form-control' placeholder='Cotação do dolar' value='<%= cotacao.cotacaoVenda %>' />
+                </label>
+            </div>
+            <div class='form-group'>
+                <label for='quantidade' class='text-left'>Quantidade de dolares
+                    <input name='quantidade' id='quantidade' type='text' class='form-control' placeholder='Quantidade de dolares' />
+                </label>
+            </div>
+            <div class='mx-auto text-center'>
+                <button type='button' id='calc' class='btn btn-primary' >Converter</button>
+            </div>
         </form>
     </div>
+    <script type='text/javascript'>
+    $(function(){
+
+        $('#alert').hide()
+
+        $(function isNumber(n) {
+            return !isNaN(parseFloat(n)) && isFinite(n);
+        })
+
+        $('#cotacao').click(function(){
+            $('#cotacao').removeClass('bg-danger')
+        })
+
+        $('#quantidade').click(function(){
+            $('#quantidade').removeClass('bg-danger')
+        })
+
+        $('#calc').click(function(){
+            const cotacao = parseFloat($('#cotacao').val())
+            const quantidade = parseFloat($('#quantidade').val())
+
+            if ($.isNumeric(cotacao) && $.isNumeric(quantidade)){
+                /* $.get('/cotacao', $('#form').serialize(), function(){
+                    console.log('success')
+                }) */
+
+                const url = '/cotacao?' + $('#form1').serialize()
+                $(location).prop('href', url)
+                
+            }else{
+
+                $('#alert').fadeIn('slow')
+
+                if(!$.isNumeric(cotacao)) {
+                    $('#cotacao').addClass('bg-warning')
+                }
+                if(!$.isNumeric(quantidade)){
+                    $('#quantidade').addClass('bg-warning')
+                }
+            }  
+        })
+    })
+    </script>
     <%- include('footer') %>

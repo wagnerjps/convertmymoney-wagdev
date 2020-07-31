@@ -3,11 +3,15 @@ const app = express()
 const path = require('path')
 const convert = require('./lib/convert')
 const apiBCB = require('./lib/api.bcb')
+const nm_dependencies = ['bootstrap', 'jquery', 'popper.js']; // keep adding required node_modules to this array.
+
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 app.use(express.static(path.join(__dirname, 'public')))
-
+nm_dependencies.forEach(dep => {
+    app.use(`/${dep}`, express.static(path.resolve(`node_modules/${dep}`)));
+});
 
 app.get('/', async (req, res) => {
     let cotacao = {}
